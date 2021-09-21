@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
+// import { isUrl, isImg } from '@/utils';
+// import Icon, { IconFont } from '@/components/icon/Icon';
+// import styles from './index.scss';
 
 // TODO: prop interface naming
 interface NavigationItem {
@@ -14,7 +17,22 @@ interface NavigationProps {
   navigationList: NavigationItem[];
 }
 
-export default function navigation(props: NavigationProps) {
+// const getIcon = (
+//   icon: string | React.ReactNode,
+//   iconPrefixes: string | 'icon-',
+// ) => {
+//   if (typeof icon === 'string' && icon !== '') {
+//     if (isUrl(icon) || isImg(icon)) {
+//       return <Icon />
+//     }
+//     if (icon.startsWith(iconPrefixes)) {
+//       return <IconFont type={icon} />;
+//     }
+//   }
+//   return icon;
+// };
+
+const Navigation = (props: NavigationProps) => {
   const { selectedNav, navigationList = [] } = props;
   const [current, setCurrent] = useState(
     selectedNav || (navigationList[0] && navigationList[0].value)
@@ -27,7 +45,8 @@ export default function navigation(props: NavigationProps) {
       {navigationList.map((item) => (
         <li
           key={item.value}
-          className={cn('py-2 cursor-pointer text-gray-400 hover:text-yellow-600', {
+          // TODO: 这样组织 class 可读性很差，也不好维护
+          className={classNames('py-2 cursor-pointer text-gray-400 hover:text-yellow-600', {
             'text-yellow-600': current === item.value,
           })}
           onClick={() => handleNavClick(item.value)}
@@ -39,3 +58,5 @@ export default function navigation(props: NavigationProps) {
     </ul>
   );
 }
+
+export default Navigation;
