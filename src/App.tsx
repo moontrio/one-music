@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App h-screen flex static">
       {/* side bar */}
-      <aside className="p-10 pr-16 bg-white">
-        <div className="py-4 text-gray-600">Browse</div>
+      <aside className="p-8 bg-white">
+        <div className="py-2 px-4 text-gray-400">Browse</div>
         <Navigation navigationList={NAVIGATION_LIST} />
       </aside>
       {/* main */}

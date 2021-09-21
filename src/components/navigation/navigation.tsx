@@ -12,10 +12,6 @@ interface NavigationItem {
 }
 
 // TODO: navigation group
-interface NavigationProps {
-  selectedNav?: string;
-  navigationList: NavigationItem[];
-}
 
 // const getIcon = (
 //   icon: string | React.ReactNode,
@@ -32,11 +28,8 @@ interface NavigationProps {
 //   return icon;
 // };
 
-const Navigation = (props: NavigationProps) => {
-  const { selectedNav, navigationList = [] } = props;
-  const [current, setCurrent] = useState(
-    selectedNav || (navigationList[0] && navigationList[0].value)
-  );
+const Navigation = ({ navigationList }: { navigationList: NavigationItem[]}) => {
+  const [current, setCurrent] = useState(navigationList[0] && navigationList[0].value);
 
   const handleNavClick = (value: string) => setCurrent(value);
 
@@ -46,8 +39,10 @@ const Navigation = (props: NavigationProps) => {
         <li
           key={item.value}
           // TODO: 这样组织 class 可读性很差，也不好维护
-          className={classNames('py-2 cursor-pointer text-gray-400 hover:text-yellow-600', {
-            'text-yellow-600': current === item.value,
+          className={classNames([
+              'py-2 px-4 w-40 mb-1 cursor-pointer text-gray-600 rounded-lg',
+              'hover:bg-gray-200'], {
+            'bg-gray-200 text-yellow-600': current === item.value,
           })}
           onClick={() => handleNavClick(item.value)}
         >
