@@ -1,5 +1,7 @@
-export function isUrl(str: string) {
-  return str.startsWith('http://') || str.startsWith('https://');
-}
+import isImg from './isImg';
+import isUrl from './isUrl';
 
-export function isImg() {}
+export {
+  isImg,
+  isUrl,
+};
