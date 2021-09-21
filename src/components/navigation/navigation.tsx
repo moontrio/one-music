@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-// import { isUrl, isImg } from '@/utils';
-// import Icon, { IconFont } from '@/components/icon/Icon';
+import { isUrl, isImg } from '@/utils';
+import Icon, { IconFont } from '@/components/icon';
 // import styles from './index.scss';
 
 // TODO: prop interface naming
