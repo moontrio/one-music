@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import reactRefresh from '@vitejs/plugin-react-refresh'
+import WindiCss from 'vite-plugin-windicss'
 import importToCDN from 'vite-plugin-cdn-import'
 
 // https://vitejs.dev/config/
@@ -12,6 +13,7 @@ export default defineConfig({
   },
   plugins: [
     reactRefresh(),
+    WindiCss(),
     importToCDN({
       modules: [{
         name: 'iconfont',
