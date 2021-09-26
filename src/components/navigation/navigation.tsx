@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { isUrl, isImg } from '@/utils';
-import Icon, { IconFont } from '@/components/icon';
-// import styles from './index.scss';
+import Icon from '@/components/icon';
 
 // TODO: prop interface naming
 interface NavigationItem {
@@ -12,23 +10,11 @@ interface NavigationItem {
 }
 
 // TODO: navigation group
+interface NavigationProps {
+  navigationList: NavigationItem[];
+}
 
-// const getIcon = (
-//   icon: string | React.ReactNode,
-//   iconPrefixes: string | 'icon-',
-// ) => {
-//   if (typeof icon === 'string' && icon !== '') {
-//     if (isUrl(icon) || isImg(icon)) {
-//       return <Icon />
-//     }
-//     if (icon.startsWith(iconPrefixes)) {
-//       return <IconFont type={icon} />;
-//     }
-//   }
-//   return icon;
-// };
-
-const Navigation = ({ navigationList }: { navigationList: NavigationItem[]}) => {
+const Navigation: React.FC<NavigationProps> = ({ navigationList }) => {
   const [current, setCurrent] = useState(navigationList[0] && navigationList[0].value);
 
   const handleNavClick = (value: string) => setCurrent(value);
@@ -46,7 +32,7 @@ const Navigation = ({ navigationList }: { navigationList: NavigationItem[]}) => 
           })}
           onClick={() => handleNavClick(item.value)}
         >
-          <i className={'iconfont ' + item.icon}></i>
+          <Icon type={item.icon} />
           <span className="pl-4">{item.name}</span>
         </li>
       ))}
