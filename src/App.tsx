@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Navigation from './components/navigation'
+import Button from './components/button'
 
 import { NAVIGATION_LIST } from "./constants";
 
@@ -16,8 +17,15 @@ function App() {
         <Navigation navigationList={NAVIGATION_LIST} />
       </aside>
       {/* main */}
-      <main className="flex-grow bg-gray-100">
-        <i className="iconfont icon-search"></i>
+      <main className="flex-grow bg-gray-100 p-6">
+        <Button
+          icon="icon-search"
+        >
+          button
+        </Button>
+        <Button>
+          button
+        </Button>
       </main>
       {/* tool bar */}
       <div className="absolute bottom-0 w-full p-6 bg-white rounded-t-3xl toolbar">tool bar</div>

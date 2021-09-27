@@ -7,15 +7,32 @@ import './index.css';
  * type: '/favicon.png' for static url
  */
 export interface IconProps {
-  type: string;
+  icon: string;
+  style?: React.CSSProperties
   className?: string | undefined;
 }
 
-const Icon: React.FC<IconProps> = ({ type, className = '' }) => {
-  if (type.startsWith('icon')) {
-    return <i className={`${type} ${className}`.trim()} />;
+const Icon: React.FC<IconProps> = ({
+  icon,
+  style,
+  className = '',
+}) => {
+  if (icon.startsWith('icon')) {
+    return (
+      <i
+        style={style}
+        className={`${icon} ${className}`.trim()}
+      />
+    );
   }
-  return <img src={type} className={className} />;
+
+  return (
+    <img
+      src={icon}
+      style={style}
+      className={className}
+    />
+  );
 };
 
 export default Icon;

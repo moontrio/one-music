@@ -32,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({ navigationList }) => {
           })}
           onClick={() => handleNavClick(item.value)}
         >
-          <Icon type={item.icon} />
+          <Icon icon={item.icon} />
           <span className="pl-4">{item.name}</span>
         </li>
       ))}
