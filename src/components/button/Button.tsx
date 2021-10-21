@@ -1,29 +1,33 @@
-import React from 'react'
-import classNames from 'classnames'
-import Icon from '../icon'
-import './button.css'
+import React from 'react';
+import classNames from 'classnames';
 
-const prefixCls = 'one-btn'
+import { tuple } from '../_util/type';
+import Icon from '../icon';
+import './button.css';
 
-type ButtonType = 'default' | 'primary' | 'text'
+const prefixCls = 'one-btn';
+
+const ButtonTypes = tuple('default', 'primary', 'text');
+type ButtonType = typeof ButtonTypes[number];
 
 interface ButtonProps {
-  type?: ButtonType
-  icon?: string
-  disabled?: boolean
-  className?: string
-  children: React.ReactNode
-  onClick?: React.MouseEventHandler<HTMLElement>
+  type?: ButtonType;
+  icon?: string;
+  disabled?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
-  const {
-    type = 'default', // TODO: default props
-    icon,
-    className,
-    children,
-  } = props;
-  console.log(children, type, icon)
+const Button: React.FC<ButtonProps> = ({
+  type = 'default', // TODO: default props
+  icon,
+  className,
+  disabled,
+  children,
+  onClick,
+}) => {
+  console.log(children, type, icon);
 
   const classes = classNames(
     prefixCls,
@@ -31,26 +35,22 @@ const Button: React.FC<ButtonProps> = (props) => {
       [`${prefixCls}-${type}`]: type,
     },
     className,
-  )
+  );
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
-    const { disabled, onClick } = props;
     if (disabled) {
       e.preventDefault();
       return;
     }
     (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
-  }
+  };
 
   return (
-    <button
-      className={classes}
-      onClick={handleClick}
-    >
-      {icon && <Icon icon={icon} style={{fontSize: 'inherit'}} />}
+    <button className={classes} onClick={handleClick}>
+      {icon && <Icon icon={icon} style={{ fontSize: 'inherit' }} />}
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
