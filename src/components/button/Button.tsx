@@ -1,31 +1,51 @@
 import React from 'react'
 import classNames from 'classnames'
 import Icon from '../icon'
-import styles from './style.module.css'
+import './button.css'
+
+const prefixCls = 'one-btn'
+
+type ButtonType = 'default' | 'primary' | 'text'
 
 interface ButtonProps {
-  children: React.ReactNode
-  type?: 'primary' | 'text'
+  type?: ButtonType
   icon?: string
+  disabled?: boolean
   className?: string
-  onClick?: () => void
+  children: React.ReactNode
+  onClick?: React.MouseEventHandler<HTMLElement>
 }
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  type,
-  icon,
-  className,
-  onClick,
-}) => {
+const Button: React.FC<ButtonProps> = (props) => {
+  const {
+    type = 'default', // TODO: default props
+    icon,
+    className,
+    children,
+  } = props;
   console.log(children, type, icon)
+
+  const classes = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${type}`]: type,
+    },
+    className,
+  )
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
+    const { disabled, onClick } = props;
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+    (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
+  }
+
   return (
     <button
-      className={classNames(className, styles.button, {
-        // [styles[type]]: type,
-      })
-      }
-      onClick={onClick}
+      className={classes}
+      onClick={handleClick}
     >
       {icon && <Icon icon={icon} style={{fontSize: 'inherit'}} />}
       {children}
