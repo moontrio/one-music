@@ -5,7 +5,7 @@ import { tuple } from '../_util/type';
 import Icon from '../icon';
 import './button.css';
 
-const prefixCls = 'one-btn';
+const prefixCls = 'one-button';
 
 const ButtonTypes = tuple('default', 'primary', 'text');
 type ButtonType = typeof ButtonTypes[number];
