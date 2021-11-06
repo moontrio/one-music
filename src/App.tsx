@@ -3,6 +3,7 @@ import "./App.css";
 
 import Navigation from './components/navigation'
 import Button from './components/button'
+import Input from './components/input'
 
 import { NAVIGATION_LIST } from "./constants";
 
@@ -18,6 +19,7 @@ function App() {
       </aside>
       {/* main */}
       <main className="flex-grow bg-gray-100 p-6">
+        <Input />
         <Button
           icon="icon-search"
         >

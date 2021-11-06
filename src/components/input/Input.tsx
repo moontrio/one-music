@@ -1,11 +1,18 @@
 import React from 'react';
+import { tuple } from '../_util/type';
 
-export type SizeType = 'small' | 'middle' | 'large';
+const SizeTypes = tuple('small', 'middle', 'large');
+
+type SizeType = typeof SizeTypes[number];
 
 export interface InputProps {
-    size?: SizeType;
-    prefix?: React.ReactNode;
-    suffix?: React.ReactNode;
+  size?: SizeType;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
-export default function Input() {}
+const Input= () => {
+  return <input />;
+};
+
+export default Input;
