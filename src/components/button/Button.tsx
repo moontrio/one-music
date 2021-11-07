@@ -19,14 +19,8 @@ interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  type = 'default', // TODO: default props
-  icon,
-  className,
-  disabled,
-  children,
-  onClick,
-}) => {
+const Button = (props: ButtonProps) => {
+  const { type, icon, className, disabled, children, onClick } = props;
   console.log(children, type, icon);
 
   const classes = classNames(
@@ -52,5 +46,11 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+Button.defaultProps = {
+  type: 'default',
+};
+
+console.log(Button);
 
 export default Button;
