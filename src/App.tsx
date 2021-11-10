@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useState } from 'react';
+import './App.css';
 
-import Navigation from './components/navigation'
-import Button from './components/button'
-import Input from './components/input'
+import request from './utils/request';
 
-import { NAVIGATION_LIST } from "./constants";
+import Navigation from './components/navigation';
+
+import { NAVIGATION_LIST } from './constants';
 
 function App() {
-
+  request.post('playlist/highquality/list')
+    .then((response) => console.log(response));
 
   return (
     <div className="App h-screen flex static">
@@ -19,15 +20,6 @@ function App() {
       </aside>
       {/* main */}
       <main className="flex-grow bg-gray-100 p-6">
-        <Input />
-        <Button
-          icon="icon-search"
-        >
-          button
-        </Button>
-        <Button>
-          button
-        </Button>
       </main>
       {/* tool bar */}
       <div className="absolute bottom-0 w-full p-6 bg-white rounded-t-3xl toolbar">tool bar</div>
