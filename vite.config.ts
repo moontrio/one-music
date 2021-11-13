@@ -30,10 +30,10 @@ export default defineConfig({
         target: 'https://music.163.com/api/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
-        // headers: {
-        //   ReferenceError: 'http://music.163.com',
-        //   origin: 'http://music.163.com',
-        // }
+        headers: {
+          ReferenceError: 'http://music.163.com',
+          origin: 'http://music.163.com',
+        }
       }
     }
   }
