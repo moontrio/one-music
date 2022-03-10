@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import Icon from '@/components/icon';
 
 // TODO: prop interface naming
-interface NavigationItem {
-  value: string;
+export type NavigationItemValue = string
+export interface NavigationItem {
+  value: NavigationItemValue;
   name: string;
   icon: string;
 }
@@ -12,12 +14,25 @@ interface NavigationItem {
 // TODO: navigation group
 interface NavigationProps {
   navigationList: NavigationItem[];
+  clickHandle: Function;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ navigationList }) => {
-  const [current, setCurrent] = useState(navigationList[0] && navigationList[0].value);
+// TODO: 这玩意儿叫 navigation 还是叫 menu，区别在于 navigation 可以跳转？？那和 menu 加一个 clickHandle 的区别呢
+const Navigation: React.FC<NavigationProps> = ({ navigationList, clickHandle = () => {} }) => {
+  const [current, setCurrent] = useState<String | null>(null);
+  const location = useLocation();
 
-  const handleNavClick = (value: string) => setCurrent(value);
+  const handleNavClick = (value: NavigationItemValue) => {
+    setCurrent(value);
+    clickHandle(value);
+    console.log(value);
+  };
+
+  useEffect(() => {
+    const [, currentPath] = location?.pathname.split('/')
+    const [firstNavItem] = navigationList;
+    handleNavClick(currentPath || firstNavItem.value);
+  }, []);
 
   return (
     <ul>
@@ -26,10 +41,9 @@ const Navigation: React.FC<NavigationProps> = ({ navigationList }) => {
           key={item.value}
           // TODO: 这样组织 class 可读性很差，也不好维护
           className={classNames([
-              'py-2 px-4 w-40 mb-1 cursor-pointer text-gray-600 rounded-lg',
-              'hover:bg-gray-200'], {
-            'bg-gray-200 text-yellow-600': current === item.value,
-          })}
+            'py-2 px-4 w-40 mb-1 cursor-pointer text-gray-600 rounded-lg',
+            'hover:bg-gray-200'
+          ], { 'bg-gray-200 text-yellow-600': current === item.value })}
           onClick={() => handleNavClick(item.value)}
         >
           <Icon icon={item.icon} />
