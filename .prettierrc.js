@@ -4,5 +4,5 @@ module.exports = {
   printWidth: 100,
   proseWrap: 'never',
   endOfLine: 'lf',
-  semi: true,
+  semi: false,
 };

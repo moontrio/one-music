@@ -1,11 +1,21 @@
 import axios from 'axios';
 
 let baseURL = '/api';
+const REAL_IP = '211.161.244.70';
 
 const request = axios.create({
   baseURL,
   withCredentials: true,
   timeout: 15000,
+});
+
+request.interceptors.request.use((config) => {
+  // console.log(config);
+  // if (!config.params) config.params = {};
+  // config.params.realIP = REAL_IP;
+  // if (!config.headers) config.headers = {};
+  // config.headers['X-Real-IP'] = REAL_IP;
+  return config;
 });
 
 request.interceptors.response.use(
