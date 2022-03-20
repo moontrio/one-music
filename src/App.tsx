@@ -6,6 +6,7 @@ import Navigation from './components/navigation'
 import type { NavigationItemValue } from './components/navigation/navigation'
 
 import Explore from './views/explore'
+import Album from './views/album'
 
 import { NAVIGATION_LIST } from './constants'
 
@@ -29,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<div>home</div>} />
             <Route path="explore" element={<Explore />} />
+            <Route path="album/:albumId" element={<Album />} />
           </Routes>
         </main>
       </div>

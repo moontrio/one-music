@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   // getHighQualityPlaylist,
   // getRecommendPlaylist,
@@ -10,9 +11,20 @@ import Card from '@/components/card'
 import './index.css'
 
 export default function Explore() {
+  const navigate = useNavigate()
+
   // const [highQualityPlaylists, setHighQualityPlaylists] = useState([])
   const [newSongs, setNewSongs] = useState([])
   const [newAlbums, setNewAlbums] = useState([])
+
+  const handleClickCover = (song) => {
+    const albumId = song?.song.album.id
+    // console.log('cover clicked', song, albumId)
+    navigate(`/album/${albumId}`)
+  }
+  const handleClickPlay = () => {
+    // console.log('play clicked')
+  }
 
   const fetchData = () => {
     // getHighQualityPlaylist()
@@ -40,25 +52,16 @@ export default function Explore() {
     <div>
       <div>
         {/* TODO: extract class */}
-        {/* <div className="mb-5 text-28px font-semibold">精品歌单</div>
-        <div className="grid grid-cols-5 gap-6">
-          {highQualityPlaylists.map((playlist: any) => (
-            <Card
-              key={playlist.id}
-              imgSrc={getMiddleSizeImageUrl(playlist.coverImgUrl)}
-              title={playlist.name}
-              subtitle={playlist.tag}
-            />
-          ))}
-        </div> */}
 
         <div className="my-5 text-28px font-semibold">新歌速递</div>
         <div className="cover-row">
           {newSongs.map((song: any) => (
             <Card
               key={song.id}
-              imgSrc={getMiddleSizeImageUrl(song.picUrl)}
+              imgUrl={getMiddleSizeImageUrl(song.picUrl)}
               title={song.name} subtitle={song?.song.artists[0].name}
+              handleClickCover={() => handleClickCover(song)}
+              handleClickPlay={handleClickPlay}
             />
           ))}
         </div>
@@ -68,7 +71,7 @@ export default function Explore() {
           {newAlbums.map((album: any) => (
             <Card
               key={album.id}
-              imgSrc={getMiddleSizeImageUrl(album.picUrl)}
+              imgUrl={getMiddleSizeImageUrl(album.picUrl)}
               title={album.name} subtitle={album?.artist.name}
             />
           ))}

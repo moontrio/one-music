@@ -26,15 +26,19 @@ export default defineConfig({
   ],
   server: {
     proxy: {
+      // '/api': {
+      //   target: 'https://music.163.com/api/',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ''),
+      //   headers: {
+      //     ReferenceError: 'http://music.163.com',
+      //     origin: 'http://music.163.com',
+      //   }
+      // }
       '/api': {
-        target: 'https://music.163.com/api/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-        headers: {
-          ReferenceError: 'http://music.163.com',
-          origin: 'http://music.163.com',
-        }
-      }
-    }
-  }
+        target: 'http://localhost:4000',
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })

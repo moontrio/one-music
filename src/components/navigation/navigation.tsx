@@ -25,7 +25,6 @@ const Navigation: React.FC<NavigationProps> = ({ navigationList, clickHandle = (
   const handleNavClick = (value: NavigationItemValue) => {
     setCurrent(value);
     clickHandle(value);
-    console.log(value);
   };
 
   useEffect(() => {
