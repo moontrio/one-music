@@ -1,0 +1,4 @@
+.cover-img:hover + .cover-shadow {
+  visibility: visible;
+  opacity: .6;
+}

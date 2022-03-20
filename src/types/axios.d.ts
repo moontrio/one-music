@@ -1,4 +1,4 @@
-import * as axios from 'axios'
+import 'axios'
 
 declare module 'axios' {
   interface AxiosInstance {
