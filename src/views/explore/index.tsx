@@ -7,6 +7,8 @@ import {
 } from '@/api'
 import Card from '@/components/card'
 
+import './index.css'
+
 export default function Explore() {
   // const [highQualityPlaylists, setHighQualityPlaylists] = useState([])
   const [newSongs, setNewSongs] = useState([])
@@ -51,7 +53,7 @@ export default function Explore() {
         </div> */}
 
         <div className="my-5 text-28px font-semibold">新歌速递</div>
-        <div className="grid grid-cols-5 gap-6">
+        <div className="cover-row">
           {newSongs.map((song: any) => (
             <Card
               key={song.id}
@@ -62,7 +64,7 @@ export default function Explore() {
         </div>
 
         <div className="my-5 text-28px font-semibold">新专速递</div>
-        <div className="grid grid-cols-5 gap-6">
+        <div className="cover-row">
           {newAlbums.map((album: any) => (
             <Card
               key={album.id}

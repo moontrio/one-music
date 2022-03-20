@@ -14,6 +14,11 @@ export default defineConfig({
     ],
   },
   darkMode: 'class', // or 'media'
+  shortcuts: {
+    'wh-full': 'w-full h-full',
+    'flex-center': 'flex justify-center items-center',
+    'absolute-center': 'absolute flex-center wh-full',
+  },
   theme: {
     extend: {
       screens: {

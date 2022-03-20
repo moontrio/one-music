@@ -1,4 +1,31 @@
-.cover-img:hover + .cover-shadow {
+.cover-container:hover .cover-shadow {
   visibility: visible;
   opacity: .6;
+}
+
+
+.cover-icon-btn {
+  visibility: hidden;
+  opacity: 0;
+}
+.cover-container:hover .cover-icon-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cover-icon {
+  color: aliceblue;
+
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+
+  border: 1px solid hsla(0,0%,100%,.08);
+  background: hsla(0,0%,100%,.14);
+  backdrop-filter: blur(8px);
+
+  transition: background ease .2s;
+}
+.cover-icon:hover {
+  background: hsla(0,0%,100%,.28);
 }
