@@ -1,0 +1,7 @@
+/* FIXME: 这样写样式好割裂啊 */
+.tracklist-row {
+  /* display: grid; */
+  grid-template-columns: [index] 16px [first] 4fr [last] minmax(120px,1fr);
+  /* grid-gap: 16px;
+  align-items: center; */
+}
