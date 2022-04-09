@@ -5,12 +5,20 @@ import './tracklistRow.css'
 // TODO: 要不对接口请求的数据做个 adapter？鬼知道 dt ar 是啥鬼东西？？
 const TracklistRow = (props: any) => {
   const {
+    song,
+    clickRow = () => {}, // TODO: 改成点击 play icon 播放？
+  } = props
+  const {
     index,
     name,
     dt,
     ar,
-  } = props
-  return <div className="tracklist-row px-4 grid gap-4 items-center h-54px rounded-md hover:bg-gray-200">
+  } = song
+
+  return <div
+    className="tracklist-row px-4 grid gap-4 items-center h-54px rounded-md hover:bg-gray-200"
+    onClick={() => clickRow(song) }
+  >
     <span>{index}</span>
     <span>
       <span>{name}</span>

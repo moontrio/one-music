@@ -1,12 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getAlbum } from '@/api'
 import Cover from '@/components/cover'
 import { TracklistRow } from '@/components/tracklist'
+import { PlayerContext } from '@/context/player'
+import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 
 const Album = () => {
-  const { albumId } = useParams()
+  const [, playerDispatch] = useContext(PlayerContext)
+  const play = (song: any) => {
+    playerDispatch({
+      type: PLAYER_ACTIONS.PLAY,
+      payload: {
+        musicId: song.id,
+      },
+    })
+  }
 
+  const { albumId } = useParams()
   const [album, setAlbum] = useState<any>({})
   const [songs, setSongs] = useState<any>([])
 
@@ -39,7 +50,12 @@ const Album = () => {
     </div>
 
     <div className="album-songs mt-16px">
-      {songs.map((song: any, index: number) => <TracklistRow key={song.id} {...song} index={index + 1} />)}
+      {songs.map((song: any, index: number) => <TracklistRow
+        key={song.id}
+        index={index + 1}
+        song={song}
+        clickRow={play}
+      />)}
     </div>
   </div>)
 }
