@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getAlbum } from '@/api'
 import Cover from '@/components/cover'
-import { TracklistRow } from '@/components/tracklist'
+import { TrackListRow } from '@/components/track'
 import { PlayerContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 
@@ -50,11 +50,11 @@ const Album = () => {
     </div>
 
     <div className="album-songs mt-16px">
-      {songs.map((song: any, index: number) => <TracklistRow
+      {songs.map((song: any, index: number) => <TrackListRow
         key={song.id}
         index={index + 1}
         song={song}
-        clickRow={play}
+        clickPlay={play}
       />)}
     </div>
   </div>)
