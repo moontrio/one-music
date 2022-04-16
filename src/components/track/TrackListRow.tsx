@@ -7,7 +7,7 @@ const TrackListRow = (props: any) => {
   const {
     song,
     index,
-    clickPlay = () => {}, // TODO: 改成点击 play icon 播放？
+    clickPlay = () => {},
   } = props
   const {
     name,

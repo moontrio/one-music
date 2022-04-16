@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 
 import Navigation from './components/navigation'
@@ -20,7 +20,7 @@ function App() {
 
         <div className="main-container w-full h-full flex pb-64px">
           {/* side bar */}
-          <aside className="py-8 px-5 bg-white">
+          <aside className="aside-menu py-8 px-5 bg-white">
             <div className="py-2 px-4 text-gray-400">Browse</div>
             <Navigation
               navigationList={NAVIGATION_LIST}
@@ -29,9 +29,9 @@ function App() {
             />
           </aside>
           {/* main */}
-          <main className="flex-grow bg-gray-100 p-6 overflow-scroll">
+          <main className="flex-grow p-6 overflow-scroll">
             <Routes>
-              <Route path="/" element={<div>home</div>} />
+              <Route path="/" element={<Navigate to="explore" />} />
               <Route path="explore" element={<Explore />} />
               <Route path="album/:albumId" element={<Album />} />
             </Routes>
