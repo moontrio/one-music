@@ -20,7 +20,7 @@ export default defineConfig({
         var: 'iconfont',
         path: '//',
         // path: '//at.alicdn.com/t/font_2811059_y5jx0ih8yba.css',
-        css: '//at.alicdn.com/t/font_2811059_oshdr8ugdxb.css',
+        css: '//at.alicdn.com/t/font_2811059_lxz3vk7rd2.css',
       }],
     }),
   ],

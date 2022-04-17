@@ -5,6 +5,7 @@ import Cover from '@/components/cover'
 import { TrackListRow } from '@/components/track'
 import { PlayerContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
+import { getImgUrlWithSize } from '@/utils'
 
 const Album = () => {
   const [, playerDispatch] = useContext(PlayerContext)
@@ -12,7 +13,8 @@ const Album = () => {
     playerDispatch({
       type: PLAYER_ACTIONS.PLAY,
       payload: {
-        musicId: song.id,
+        musicId: song.id, // FIXME: payload
+        music: song,
       },
     })
   }
@@ -20,9 +22,6 @@ const Album = () => {
   const { albumId } = useParams()
   const [album, setAlbum] = useState<any>({})
   const [songs, setSongs] = useState<any>([])
-
-  // TODO: extract as an util
-  const generateImgUrlWithSize = (url: string, size: string | number) => `${url}?param=${size}y${size}`
 
   const fetchData = () => {
     // TODO: route params albumId undefined?
@@ -40,7 +39,7 @@ const Album = () => {
 
   return (album && <div className="album-container w-4/5 m-auto">
     <div className="album-info flex">
-      <Cover className="w-300px h-300px" imgUrl={generateImgUrlWithSize(album.picUrl, 1024)} />
+      <Cover className="w-300px h-300px" imgUrl={getImgUrlWithSize(album.picUrl, 1024)} />
       <div className="flex-1 flex flex-col ml-56px">
         <div className="text-56px leading-normal font-semibold">{album?.name}</div>
         <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>

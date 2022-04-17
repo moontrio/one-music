@@ -29,7 +29,7 @@ function App() {
             />
           </aside>
           {/* main */}
-          <main className="flex-grow p-6 overflow-scroll">
+          <main className="flex-grow p-6 overflow-auto">
             <Routes>
               <Route path="/" element={<Navigate to="explore" />} />
               <Route path="explore" element={<Explore />} />

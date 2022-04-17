@@ -18,7 +18,8 @@ export default defineConfig({
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
     'absolute-center': 'absolute flex-center wh-full',
-    'one-icon': 'p-2 text-base rounded-lg cursor-pointer hover:bg-gray-100',
+    'one-icon': 'p-2 !text-base rounded-lg cursor-pointer hover:bg-gray-100',
+    'one-icon-button': 'one-icon !text-24px',
   },
   theme: {
     extend: {

@@ -1,10 +1,13 @@
 import type { Action } from './types'
 import { getMusicSrc } from '@/utils/business'
+import type { Music } from '@/models'
+import { transformToMusic } from '@/models'
 
 // TODO: action payload type
 export interface PlayerState {
   musicId: number
   musicSrc: string
+  musicInfo: Music
 }
 type PlayerAction = Action<string, any>
 type PlayerActionHandler = (state: PlayerState, action: PlayerAction) => PlayerState
@@ -22,6 +25,7 @@ const playHandler: PlayerActionHandler = (state, { payload }) => {
   return {
     musicId: payload.musicId,
     musicSrc: getMusicSrc(payload.musicId),
+    musicInfo: transformToMusic(payload.music),
   }
 }
 // const toggleHandler: PlayerActionHandler = (state) => {

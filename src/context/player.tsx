@@ -9,7 +9,7 @@ export const AudioContext: React.Context<any> = createContext(null)
 export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
   const [playerState, playerDispatch] = useReducer(playerReducer, initialPlayerState)
 
-  const { musicSrc } = playerState
+  const { musicSrc, musicInfo } = playerState
 
   const [audio, audioState, audioControls, audioRef] = useAudio({
     src: musicSrc,
@@ -26,7 +26,7 @@ export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <PlayerContext.Provider value={[playerState, playerDispatch]}>
-      <AudioContext.Provider value={audioInfo}>
+      <AudioContext.Provider value={[audioInfo, musicInfo]}>
         {audio}
         {children}
       </AudioContext.Provider>
