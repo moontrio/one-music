@@ -6,22 +6,33 @@ import { TrackListRow } from '@/components/track'
 import { PlayerContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 import { getImgUrlWithSize } from '@/utils'
+import type { Music } from '@/models'
 
 const Album = () => {
   const [, playerDispatch] = useContext(PlayerContext)
-  const play = (song: any) => {
-    playerDispatch({
-      type: PLAYER_ACTIONS.PLAY,
-      payload: {
-        musicId: song.id, // FIXME: payload
-        music: song,
-      },
-    })
-  }
 
   const { albumId } = useParams()
   const [album, setAlbum] = useState<any>({})
   const [songs, setSongs] = useState<any>([])
+
+  function play(song: Music) {
+    playerDispatch({
+      type: PLAYER_ACTIONS.PLAY,
+      payload: {
+        musicId: song.id,
+        musicInfo: song,
+      },
+    })
+  }
+
+  function playTheList() {
+    playerDispatch({
+      type: PLAYER_ACTIONS.PLAY_THE_LIST,
+      payload: {
+        playlist: songs,
+      },
+    })
+  }
 
   const fetchData = () => {
     // TODO: route params albumId undefined?
@@ -39,7 +50,11 @@ const Album = () => {
 
   return (album && <div className="album-container w-4/5 m-auto">
     <div className="album-info flex">
-      <Cover className="w-300px h-300px" imgUrl={getImgUrlWithSize(album.picUrl, 1024)} />
+      <Cover
+        className="w-300px h-300px"
+        imgUrl={getImgUrlWithSize(album.picUrl, 1024)}
+        onClickPlay={playTheList}
+      />
       <div className="flex-1 flex flex-col ml-56px">
         <div className="text-56px leading-normal font-semibold">{album?.name}</div>
         <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>

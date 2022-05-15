@@ -1,9 +1,16 @@
 import React from 'react'
-import { formatMilliseconds } from '@/utils'
 import './TrackListRow.css'
 
-// TODO: 要不对接口请求的数据做个 adapter？鬼知道 dt ar 是啥鬼东西？？
-const TrackListRow = (props: any) => {
+import { formatMilliseconds } from '@/utils'
+import type { Artist, Music } from '@/models'
+
+interface IProps {
+  song: Music
+  index: number
+  clickPlay: (song: Music) => void
+}
+
+const TrackListRow = (props: IProps) => {
   const {
     song,
     index,
@@ -11,8 +18,8 @@ const TrackListRow = (props: any) => {
   } = props
   const {
     name,
-    dt,
-    ar,
+    duration,
+    artists,
   } = song
 
   return <div
@@ -28,11 +35,11 @@ const TrackListRow = (props: any) => {
 
     <span>
       <span>{name}</span>
-      <span className="text-xs text-gray-700"> - {ar.map((item: any) => item?.name).join('/')}</span>
+      <span className="text-xs text-gray-700"> - {artists.map((artist: Artist) => artist?.name).join('/')}</span>
     </span>
     <span className="flex justify-end">
       <i className="track__icon icon-like" />
-      <span className="ml-2">{formatMilliseconds(dt)}</span>
+      <span className="ml-2">{formatMilliseconds(duration)}</span>
     </span>
   </div>
 }
