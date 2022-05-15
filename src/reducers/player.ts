@@ -13,6 +13,7 @@ export interface PlayerState {
 type PlayerAction = Action<string, PlayerState>
 type PlayerActionHandler = (state: PlayerState, action: PlayerAction) => PlayerState
 
+// TODO: 哪些 state/action 属于 player，哪些 state/action 属于 audio ?
 export const ACTIONS = {
   PLAY: 'PLAY',
   PLAY_THE_LIST: 'PLAY_THE_LIST',

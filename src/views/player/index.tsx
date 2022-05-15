@@ -3,13 +3,13 @@ import { useContext } from 'react'
 import classNames from 'classnames'
 import NowPlaying from './NowPlaying'
 import PlayerControls from './PlayerControls'
-import { AudioContext, PlayerContext } from '@/context/player'
+import { AudioContext, PlayerDispatchContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 
 const Player = () => {
   // TODO: context 和 reducer 的类型提示断了。。
   const [audioInfo, musicInfo] = useContext(AudioContext)
-  const [, playerDispatch] = useContext(PlayerContext)
+  const playerDispatch = useContext(PlayerDispatchContext)
   const { state, controls } = audioInfo
 
   // TODO: 想把这些逻辑操作都丢到一个 hook 里面，不想写在组件中

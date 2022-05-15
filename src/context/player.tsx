@@ -3,7 +3,8 @@ import { createContext, useMemo, useReducer } from 'react'
 import { initialPlayerState, playerReducer } from '@/reducers/player'
 import { useAudio } from '@/hooks'
 
-export const PlayerContext: React.Context<any> = createContext(null)
+export const PlayerStateContext: React.Context<any> = createContext(null)
+export const PlayerDispatchContext: React.Context<any> = createContext(null)
 export const AudioContext: React.Context<any> = createContext(null)
 
 export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
@@ -25,11 +26,13 @@ export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
   }), [musicSrc, audio, audioState, audioControls, audioRef])
 
   return (
-    <PlayerContext.Provider value={[playerState, playerDispatch]}>
-      <AudioContext.Provider value={[audioInfo, musicInfo]}>
-        {audio}
-        {children}
-      </AudioContext.Provider>
-    </PlayerContext.Provider>
+    <PlayerDispatchContext.Provider value={playerDispatch}>
+      <PlayerStateContext.Provider value={playerState}>
+        <AudioContext.Provider value={[audioInfo, musicInfo]}>
+          {audio}
+          {children}
+        </AudioContext.Provider>
+      </PlayerStateContext.Provider>
+    </PlayerDispatchContext.Provider>
   )
 }

@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom'
 import { getAlbum } from '@/api'
 import Cover from '@/components/cover'
 import { TrackListRow } from '@/components/track'
-import { PlayerContext } from '@/context/player'
+import { PlayerDispatchContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 import { getImgUrlWithSize } from '@/utils'
 import type { Music } from '@/models'
 
 const Album = () => {
-  const [, playerDispatch] = useContext(PlayerContext)
+  const playerDispatch = useContext(PlayerDispatchContext)
 
   const { albumId } = useParams()
   const [album, setAlbum] = useState<any>({})
