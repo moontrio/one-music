@@ -8,15 +8,15 @@ export type CoverImg = string
 export interface CoverProps {
   imgUrl: CoverImg
   // radius?: string
-  handleClickCover?: () => void
-  handleClickPlay?: () => void
+  onClickCover?: () => void
+  onClickPlay?: () => void
 
   className?: string
 }
 
 const Cover = (props: CoverProps) => {
-  const handleClickCover = props.handleClickCover
-  const handleClickPlay = props.handleClickPlay
+  const onClickCover = props.onClickCover
+  const onClickPlay = props.onClickPlay
 
   return (
     <div className={classNames([
@@ -24,12 +24,12 @@ const Cover = (props: CoverProps) => {
       props.className,
     ])} >
       <button className="cover-icon-btn absolute-center">
-        <i className="cover-icon icon-play relative z-10 flex-center rounded-full" onClick={handleClickPlay} />
+        <i className="cover-icon icon-play relative z-10 flex-center rounded-full" onClick={onClickPlay} />
       </button>
       <img
         className="cover-img relative z-1 cursor-pointer"
         src={props.imgUrl}
-        onClick={handleClickCover}
+        onClick={onClickCover}
       />
       <span
         className={classNames(

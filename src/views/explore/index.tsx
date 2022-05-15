@@ -17,12 +17,12 @@ export default function Explore() {
   const [newSongs, setNewSongs] = useState([])
   const [newAlbums, setNewAlbums] = useState([])
 
-  const handleClickCover = (song) => {
+  const onClickCover = (song) => {
     const albumId = song?.song.album.id
     // console.log('cover clicked', song, albumId)
     navigate(`/album/${albumId}`)
   }
-  const handleClickPlay = () => {
+  const onClickPlay = () => {
     // console.log('play clicked')
   }
 
@@ -60,8 +60,8 @@ export default function Explore() {
               key={song.id}
               imgUrl={getMiddleSizeImageUrl(song.picUrl)}
               title={song.name} subtitle={song?.song.artists[0].name}
-              handleClickCover={() => handleClickCover(song)}
-              handleClickPlay={handleClickPlay}
+              onClickCover={() => onClickCover(song)}
+              onClickPlay={onClickPlay}
             />
           ))}
         </div>
