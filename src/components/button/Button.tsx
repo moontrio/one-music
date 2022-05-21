@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { tuple } from '../_util/type';
-import Icon from '../icon';
 import './button.css';
+import Icon from '../icon';
+import { tuple } from '@/utils/type';
 
 const prefixCls = 'one-button';
 

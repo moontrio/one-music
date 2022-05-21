@@ -1,49 +1,52 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './index.css'
+import Card from '@/components/card'
 import {
-  // getHighQualityPlaylist,
-  // getRecommendPlaylist,
-  getAlbumNew,
+  getAlbum,
+  getNewAlbums,
   getPersonalizedNewSong,
 } from '@/api'
-import Card from '@/components/card'
-
-import './index.css'
+import { getImgUrlWithSize } from '@/utils'
+import { PlayerDispatchContext } from '@/context/player'
+import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 
 export default function Explore() {
   const navigate = useNavigate()
+  const playerDispatch = useContext(PlayerDispatchContext)
 
-  // const [highQualityPlaylists, setHighQualityPlaylists] = useState([])
   const [newSongs, setNewSongs] = useState([])
   const [newAlbums, setNewAlbums] = useState([])
 
-  const onClickCover = (song) => {
-    const albumId = song?.song.album.id
-    // console.log('cover clicked', song, albumId)
+  const onClickCover = (albumId: number | string) => {
     navigate(`/album/${albumId}`)
   }
   const onClickPlay = () => {
     // console.log('play clicked')
   }
-
-  const fetchData = () => {
-    // getHighQualityPlaylist()
-    //   .then((data) => {
-    //     setHighQualityPlaylists(data.playlists)
-    //   })
-    getPersonalizedNewSong()
-      .then((data) => {
-        setNewSongs(data.result)
+  function playTheAlbum(albumId: number) {
+    getAlbum(albumId).then(({ songs }) => {
+      playerDispatch({
+        type: PLAYER_ACTIONS.PLAY_THE_LIST,
+        payload: {
+          playlist: songs,
+        },
       })
-    // getRecommendPlaylist()
-    getAlbumNew()
+    })
+  }
+
+  function fetchData() {
+    getNewAlbums()
       .then((data) => {
         setNewAlbums(data.albums)
       })
-    // getHighQualityPlaylist();
+    getPersonalizedNewSong()
+      .then((data) => {
+        setNewSongs(data.songs)
+      })
   }
 
-  const getMiddleSizeImageUrl = (url: string) => `${url}?params=512y512`
+  const getMiddleSizeImageUrl = (url: string) => getImgUrlWithSize(url, 512)
 
   useEffect(() => {
     fetchData()
@@ -53,19 +56,6 @@ export default function Explore() {
       <div>
         {/* TODO: extract class */}
 
-        <div className="my-5 text-28px font-semibold">新歌速递</div>
-        <div className="cover-row">
-          {newSongs.map((song: any) => (
-            <Card
-              key={song.id}
-              imgUrl={getMiddleSizeImageUrl(song.picUrl)}
-              title={song.name} subtitle={song?.song.artists[0].name}
-              onClickCover={() => onClickCover(song)}
-              onClickPlay={onClickPlay}
-            />
-          ))}
-        </div>
-
         <div className="my-5 text-28px font-semibold">新专速递</div>
         <div className="cover-row">
           {newAlbums.map((album: any) => (
@@ -73,6 +63,21 @@ export default function Explore() {
               key={album.id}
               imgUrl={getMiddleSizeImageUrl(album.picUrl)}
               title={album.name} subtitle={album?.artist.name}
+              onClickCover={() => onClickCover(album.id)}
+              onClickPlay={() => playTheAlbum(album.id)}
+            />
+          ))}
+        </div>
+
+        <div className="my-5 text-28px font-semibold">新歌速递</div>
+        <div className="cover-row">
+          {newSongs.map((song: any) => (
+            <Card
+              key={song.id}
+              imgUrl={getMiddleSizeImageUrl(song.album.picUrl)}
+              title={song.name} subtitle={song.artists[0].name}
+              onClickCover={() => onClickCover(song.album.id)}
+              onClickPlay={onClickPlay}
             />
           ))}
         </div>

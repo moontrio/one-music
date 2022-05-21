@@ -1,5 +1,5 @@
 import React from 'react';
-import { tuple } from '../_util/type';
+import { tuple } from '@/utils/type';
 
 const SizeTypes = tuple('small', 'middle', 'large');
 
