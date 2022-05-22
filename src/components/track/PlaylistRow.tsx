@@ -10,10 +10,15 @@ import type { Artist, Music } from '@/models'
 interface IProps {
   song: Music
   play?: () => void
+  className?: string
 }
 
 function PlaylistRow(props: IProps) {
-  const { song, play = () => {} } = props
+  const {
+    song,
+    play = () => {},
+    className,
+  } = props
   const {
     name,
     duration,
@@ -28,6 +33,7 @@ function PlaylistRow(props: IProps) {
         'grid grid-cols-[48px,4fr,2fr,minmax(120px,1fr)] items-center gap-4',
         'p-2 rounded-xl hover:bg-gray-100',
         'transform duration-300',
+        className,
       )}
       onDoubleClick={play}
     >
@@ -38,7 +44,7 @@ function PlaylistRow(props: IProps) {
         showShadow={false}
       />
       <span className="flex flex-col">
-        <span>{name}</span>
+        <span className="text-lg">{name}</span>
         <span className="text-xs line-clamp-1">{artists.map((artist: Artist) => artist.name).join(', ')}</span>
       </span>
       <span>{album.name}</span>

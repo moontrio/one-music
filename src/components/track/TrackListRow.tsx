@@ -42,9 +42,9 @@ const TrackListRow = (props: IProps) => {
       <span>{name}</span>
       <span className="text-xs text-gray-700"> - {artists.map((artist: Artist) => artist?.name).join('/')}</span>
     </span>
-    <span className="flex justify-end">
-      <i className="track__icon icon-like" />
-      <span className="ml-2">{formatMilliseconds(duration)}</span>
+    <span className="flex justify-end mr-2">
+      <i className="track__icon icon-like mr-4" />
+      <span>{formatMilliseconds(duration)}</span>
     </span>
   </div>
 }

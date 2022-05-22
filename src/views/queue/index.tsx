@@ -29,11 +29,14 @@ function Queue() {
   }
 
   return (playlist.length
-    ? (<div>
-      <h2 className="my-3 text-xl">正在播放</h2>
-      <PlaylistRow song={currentSong}></PlaylistRow>
-      <h2 className="my-3 text-xl">即将播放</h2>
-      <div>
+    ? (<div className="w-4/5 m-auto">
+      <h2 className="mt-8 mb-4 text-3xl font-semibold">正在播放</h2>
+      <PlaylistRow
+        className="text-sky-500 bg-sky-50 hover:bg-sky-50"
+        song={currentSong}
+      />
+      <h2 className="mt-8 mb-4 text-3xl font-semibold">即将播放</h2>
+      <div className="grid grid-flow-row gap-2">
         {restSong.map((song: Music, idx: number) => (
           <PlaylistRow
             key={song.id}
