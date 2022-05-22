@@ -74,7 +74,7 @@ function AlbumIndex() {
           key={song.id}
           index={index + 1}
           song={song}
-          clickPlay={play}
+          play={play}
         />)}
       </div>
 

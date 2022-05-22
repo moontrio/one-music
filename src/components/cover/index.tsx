@@ -7,6 +7,8 @@ import './index.css'
 export type CoverImg = string
 export interface CoverProps {
   imgUrl: CoverImg
+  showIcon?: boolean
+  showShadow?: boolean
   // radius?: string
   onClickCover?: () => void
   onClickPlay?: () => void
@@ -15,20 +17,26 @@ export interface CoverProps {
 }
 
 const Cover = (props: CoverProps) => {
-  const onClickCover = props.onClickCover
-  const onClickPlay = props.onClickPlay
+  const {
+    imgUrl,
+    showIcon = true,
+    showShadow = true,
+    onClickCover = () => {},
+    onClickPlay = () => {},
+    className,
+  } = props
 
   return (
     <div className={classNames([
       'cover-container relative rounded-xl children:rounded-lg',
-      props.className,
+      className,
     ])} >
-      <button className="cover-icon-btn absolute-center">
+      <button className={classNames('cover-icon-btn absolute-center', !showIcon && 'hidden')}>
         <i className="cover-icon icon-play relative z-10 flex-center rounded-full" onClick={onClickPlay} />
       </button>
       <img
         className="cover-img relative cursor-pointer"
-        src={props.imgUrl}
+        src={imgUrl}
         onClick={onClickCover}
       />
       <span
@@ -45,9 +53,10 @@ const Cover = (props: CoverProps) => {
           // TODO: animation fade
           'invisible',
           'opacity-0',
+          !showShadow && 'hidden',
         )}
         style={{
-          backgroundImage: `url(${props.imgUrl})`,
+          backgroundImage: `url(${imgUrl})`,
         }}
       />
     </div>

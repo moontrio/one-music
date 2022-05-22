@@ -32,6 +32,7 @@ const playHandler: PlayerActionHandler = (state, { payload }) => {
 
   return {
     ...state,
+    ...payload,
     playlist,
     musicId: payload.musicId,
     musicSrc: getMusicSrc(payload.musicId),

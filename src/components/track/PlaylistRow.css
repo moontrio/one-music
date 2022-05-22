@@ -1,0 +1,6 @@
+.playlist-row i {
+  visibility: hidden;
+}
+.playlist-row:hover i {
+  visibility: visible;
+}
