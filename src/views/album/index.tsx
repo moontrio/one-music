@@ -7,6 +7,7 @@ import { PlayerDispatchContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 import { getImgUrlWithSize } from '@/utils'
 import type { Album, Music } from '@/models'
+import Modal from '@/components/modal'
 
 function AlbumIndex() {
   const playerDispatch = useContext(PlayerDispatchContext)
@@ -14,6 +15,7 @@ function AlbumIndex() {
   const { albumId } = useParams()
   const [album, setAlbum] = useState<Album | undefined>(undefined)
   const [songs, setSongs] = useState<any>([])
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState<boolean>(false)
 
   function play(song: Music) {
     playerDispatch({
@@ -60,7 +62,10 @@ function AlbumIndex() {
           <div className="text-56px leading-normal font-semibold">{album.name}</div>
           <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>
           <div className="mt-1 text-sm text-gray-700">{new Date(album.publishTime!).getFullYear()}·{album.size}首歌曲</div>
-          <p className="mt-6 text-sm text-gray-700 line-clamp-10 whitespace-pre-wrap">{album.description}</p>
+          <p
+            className="mt-6 text-sm text-gray-700 line-clamp-5 whitespace-pre-wrap cursor-pointer"
+            onClick={() => { setIsDescriptionVisible(true) }}
+          >{album.description}</p>
         </div>
       </div>
 
@@ -72,6 +77,13 @@ function AlbumIndex() {
           clickPlay={play}
         />)}
       </div>
+
+      <Modal
+        title="专辑介绍"
+        open={isDescriptionVisible}
+        content={album.description}
+        onClose={() => { setIsDescriptionVisible(false) }}
+      />
     </div>)
     : <></>
 }

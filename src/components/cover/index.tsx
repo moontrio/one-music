@@ -27,7 +27,7 @@ const Cover = (props: CoverProps) => {
         <i className="cover-icon icon-play relative z-10 flex-center rounded-full" onClick={onClickPlay} />
       </button>
       <img
-        className="cover-img relative z-1 cursor-pointer"
+        className="cover-img relative cursor-pointer"
         src={props.imgUrl}
         onClick={onClickCover}
       />
@@ -36,7 +36,7 @@ const Cover = (props: CoverProps) => {
           'cover-shadow',
 
           // TODO: move class below to `cover-shadow`?
-          'absolute top-3',
+          'absolute top-3 -z-1',
           'wh-full',
           'filter blur-lg',
           'transform scale-x-92 scale-y-96',
