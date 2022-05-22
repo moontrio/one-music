@@ -54,11 +54,11 @@ function AlbumIndex() {
     ? (<div className="album-container w-4/5 m-auto">
       <div className="album-info flex">
         <Cover
-          className="w-300px h-300px"
+          className="flex-shrink-0 w-300px h-300px"
           imgUrl={getImgUrlWithSize(album.picUrl, 1024)}
           onClickPlay={playTheList}
         />
-        <div className="flex-1 flex flex-col ml-56px">
+        <div className="flex flex-col ml-56px">
           <div className="text-56px leading-normal font-semibold">{album.name}</div>
           <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>
           <div className="mt-1 text-sm text-gray-700">{new Date(album.publishTime!).getFullYear()}·{album.size}首歌曲</div>

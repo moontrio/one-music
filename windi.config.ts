@@ -64,34 +64,28 @@ export default defineConfig({
     plugin(({ addComponents }) => {
       const buttons = {
         '.btn': {
-          padding: '.5rem 1rem',
-          borderRadius: '.25rem',
-          fontWeight: '600',
-        },
-        '.btn-blue': {
-          'backgroundColor': '#3490dc',
-          'color': '#fff',
+          'padding': '.5rem 1rem',
+          'borderRadius': '.5rem',
+          'fontWeight': '600',
+          'transition': 'all .2s ease-in-out',
           '&:hover': {
-            backgroundColor: '#2779bd',
+            transform: 'scale(1.05)',
           },
         },
-        '.btn-red': {
-          'backgroundColor': '#e3342f',
-          'color': '#fff',
+        '.btn-plain': {
+          backgroundColor: '#fff',
+          color: '#000',
+          boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.1)',
+        },
+        '.btn-blue': {
+          'backgroundColor': '#f0f9ff',
+          'color': '#0ea5e9',
           '&:hover': {
-            backgroundColor: '#cc1f1a',
+            transform: 'scale(1.05)',
           },
         },
       }
       addComponents(buttons)
-    }),
-    plugin(({ addDynamic, variants }) => {
-      addDynamic('skew', ({ Utility, Style }) => {
-        return Utility.handler
-          .handleStatic(Style('skew'))
-          .handleNumber(0, 360, 'int', number => `skewY(-${number}deg)`)
-          .createProperty('transform')
-      }, variants('skew'))
     }),
     // require('windicss/plugin/filters'),
     require('windicss/plugin/forms'),

@@ -8,6 +8,7 @@ import type { NavigationItemValue } from './components/navigation/navigation'
 import Explore from './views/explore'
 import Album from './views/album'
 import Player from './views/player'
+import Queue from './views/queue'
 
 import { NAVIGATION_LIST } from './constants'
 import { PlayerProvider } from './context/player'
@@ -34,6 +35,8 @@ function App() {
               <Route path="/" element={<Navigate to="explore" />} />
               <Route path="explore" element={<Explore />} />
               <Route path="album/:albumId" element={<Album />} />
+
+              <Route path="queue" element={<Queue />} />
             </Routes>
           </main>
         </div>
