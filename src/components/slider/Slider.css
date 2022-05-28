@@ -1,0 +1,7 @@
+.slider .slider-handle {
+  visibility: hidden;
+}
+.slider:hover .slider-handle {
+  visibility: visible;
+}
+
