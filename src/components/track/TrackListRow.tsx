@@ -27,11 +27,11 @@ const TrackListRow = (props: IProps) => {
   return <div className={classNames(
     'track',
     'grid grid-cols-[16px,1fr,minmax(120px,1fr)] items-center gap-4',
-    'p-4 rounded-md hover:bg-light',
+    'p-4 rounded-md hover:bg-neutralLighter',
     'transform duration-300',
   )}>
     <span className="track__index">
-      <span className="text-xs text-primary">{index}</span>
+      <span className="text-xs text-neutralDark">{index}</span>
       <i
         className="track__icon icon-play"
         onClick={() => play(song) }
@@ -40,7 +40,7 @@ const TrackListRow = (props: IProps) => {
 
     <span className="line-clamp-1">
       <span>{name}</span>
-      <span className="text-xs text-primary"> - {artists.map((artist: Artist) => artist?.name).join('/')}</span>
+      <span className="text-xs text-neutralDark"> - {artists.map((artist: Artist) => artist?.name).join('/')}</span>
     </span>
     <span className="flex justify-end mr-2">
       <i className="track__icon icon-like mr-4" />

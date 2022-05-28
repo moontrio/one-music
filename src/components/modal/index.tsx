@@ -60,7 +60,7 @@ const Modal = (props: ModalProps) => {
 
           <div className={classNames(
             'modal-body',
-            'max-h-[calc(100vh-236px)] overflow-auto px-6 py-2 whitespace-pre-wrap',
+            'max-h-[calc(100vh-240px)] overflow-auto px-6 py-2 whitespace-pre-wrap',
           )}>
             {props.children || props.content}
           </div>

@@ -58,8 +58,8 @@ function AlbumIndex() {
           imgUrl={getImgUrlWithSize(album.picUrl, 1024)}
           onClickPlay={playTheList}
         />
-        <div className="flex flex-col ml-56px">
-          <div className="text-56px leading-normal font-semibold">{album.name}</div>
+        <div className="flex flex-col ml-56px text-neutralDarker">
+          <div className="text-56px leading-normal font-semibold line-clamp-1" title={album.name}>{album.name}</div>
           <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>
           <div className="mt-1 text-sm text-secondary">{new Date(album.publishTime!).getFullYear()}·{album.size}首歌曲</div>
           <p

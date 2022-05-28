@@ -1,6 +1,5 @@
 import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
-import plugin from 'windicss/plugin'
 
 export default defineConfig({
   extract: {
@@ -20,6 +19,9 @@ export default defineConfig({
     'absolute-center': 'absolute flex-center wh-full',
     'one-icon': 'p-2 !text-base !leading-none rounded-lg cursor-pointer hover:bg-gray-100',
     'one-icon-button': 'one-icon !text-24px !leading-none',
+
+    'btn': 'px-4 py-2 font-normal rounded-lg transition duration-200 ease-in-out hover:bg-gray-100',
+    'btn-primary': 'btn bg-neutralLighter text-primary',
   },
   theme: {
     extend: {
@@ -31,75 +33,19 @@ export default defineConfig({
         '2xl': '1536px',
       },
       colors: {
-        gray: colors.coolGray,
-        blue: colors.lightBlue,
-        red: colors.rose,
-        pink: colors.fuchsia,
-        highlight: colors.violet[700],
-        light: colors.violet[50],
+        primary: colors.blue[500],
+        neutralDarker: colors.gray[900],
+        neutralDark: colors.gray[700],
+        neutral: colors.gray[500],
+        neutralLight: colors.gray[300],
+        neutralLighter: colors.gray[100],
       },
-      fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-      },
-      textColor: {
-        primary: colors.slate[900],
-        secondary: colors.slate[700],
-        third: colors.slate[400],
-      },
-      spacing: {
-        128: '32rem',
-        144: '36rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
+      boxShadow: {
+        'blur': '0px 0px 10px rgba(0, 0, 0, 0.1)',
       },
     },
   },
   plugins: [
-    plugin(({ addUtilities }) => {
-      const newUtilities = {
-        '.skew-10deg': {
-          transform: 'skewY(-10deg)',
-        },
-        '.skew-15deg': {
-          transform: 'skewY(-15deg)',
-        },
-      }
-      addUtilities(newUtilities)
-    }),
-    plugin(({ addComponents }) => {
-      const buttons = {
-        '.btn': {
-          'padding': '.5rem 1rem',
-          'borderRadius': '.5rem',
-          'fontWeight': '600',
-          'transition': 'all .2s ease-in-out',
-          '&:hover': {
-            transform: 'scale(1.05)',
-          },
-        },
-        '.btn-plain': {
-          backgroundColor: '#fff',
-          color: '#000',
-          boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.1)',
-        },
-        '.btn-blue': {
-          'backgroundColor': colors.violet[50],
-          'color': colors.violet[700],
-          '&:hover': {
-            transform: 'scale(1.05)',
-          },
-        },
-      }
-      addComponents(buttons)
-    }),
-    // require('windicss/plugin/filters'),
-    require('windicss/plugin/forms'),
-    require('windicss/plugin/aspect-ratio'),
     require('windicss/plugin/line-clamp'),
-    require('windicss/plugin/typography')({
-      modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
-    }),
   ],
 })

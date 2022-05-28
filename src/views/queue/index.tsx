@@ -32,14 +32,14 @@ function Queue() {
     ? (<div className="w-4/5 m-auto">
       <h2 className="mt-8 mb-4 text-3xl font-semibold">正在播放</h2>
       <PlaylistRow
-        className="text-highlight bg-light hover:bg-light"
+        className="text-primary bg-neutralLighter hover:bg-neutralLighter"
         song={currentSong}
       />
       <h2 className="mt-8 mb-4 text-3xl font-semibold">即将播放</h2>
       <div className="grid grid-flow-row gap-2">
         {restSong.map((song: Music, idx: number) => (
           <PlaylistRow
-            className="hover:bg-light"
+            className="hover:bg-neutralLighter"
             key={song.id}
             song={song}
             play={() => play(song, idx)}
@@ -48,9 +48,9 @@ function Queue() {
       </div>
     </div>)
     : (<div className="wh-full flex-center flex-col">
-      <i className="icon-playlist !text-highlight mb-60px transform scale-800" />
+      <i className="icon-playlist !text-primary mb-60px transform scale-800" />
       <button
-        className="btn btn-blue"
+        className="btn btn-primary"
         onClick={() => { navigate('/explore') }}
       >发现你感兴趣的都内容</button>
     </div>)

@@ -96,9 +96,9 @@ const Slider = (props: SliderProps) => {
       'py-1 box-content',
       className,
     )} style={{ height: `${height}px` }}>
-      <SliderRail className="slider-rail relative h-full bg-light hover:children:visible">
+      <SliderRail className="slider-rail relative h-full bg-neutralLighter hover:children:visible">
         <SliderTrack
-          className="slider-track h-full bg-highlight"
+          className="slider-track h-full bg-primary"
           min={min}
           max={max}
           value={precisionValue}
@@ -107,7 +107,7 @@ const Slider = (props: SliderProps) => {
           className={classNames(
             'slider-handle',
             'absolute left-0 transform -translate-x-1/2 -translate-y-1/2',
-            'w-3 h-3 rounded-full bg-white shadow-inner shadow-xl cursor-pointer',
+            'w-3 h-3 rounded-full bg-white shadow-blur shadow-lg cursor-pointer',
           )}
           style={{ marginTop: `-${height / 2}px` }} // margin-top: half of slider height
           min={min}
