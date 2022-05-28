@@ -10,8 +10,8 @@ export interface PlayerState {
   musicSrc: string
   musicInfo: Music
 }
-type PlayerAction = Action<string, PlayerState>
-type PlayerActionHandler = (state: PlayerState, action: PlayerAction) => PlayerState
+export type PlayerAction = Action<string, Partial<PlayerState>>
+export type PlayerActionHandler = (state: PlayerState, action: PlayerAction) => Partial<PlayerState>
 
 // TODO: 哪些 state/action 属于 player，哪些 state/action 属于 audio ?
 export const ACTIONS = {
@@ -25,7 +25,7 @@ export const ACTIONS = {
 }
 
 const playHandler: PlayerActionHandler = (state, { payload }) => {
-  const { musicInfo } = payload
+  const { musicInfo, musicId } = payload as PlayerState
   const { playlist = [] } = state
   if (!playlist.includes(musicInfo))
     playlist.push(musicInfo)
@@ -34,9 +34,9 @@ const playHandler: PlayerActionHandler = (state, { payload }) => {
     ...state,
     ...payload,
     playlist,
-    musicId: payload.musicId,
-    musicSrc: getMusicSrc(payload.musicId),
-    musicInfo: payload.musicInfo,
+    musicId,
+    musicSrc: getMusicSrc(musicId),
+    musicInfo,
   }
 }
 
@@ -58,7 +58,7 @@ const prevOrNext: (isNext: boolean) => PlayerActionHandler = isNext => (state) =
 
   const nextIndex = isNext
     ? (index + 1) % playlist.length
-    : (index - 1) % playlist.length
+    : (index - 1 + playlist.length) % playlist.length
   const nextMusic = playlist[nextIndex]
   return {
     ...state,

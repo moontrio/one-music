@@ -10,7 +10,7 @@ import type { Album, Music } from '@/models'
 import Modal from '@/components/modal'
 
 function AlbumIndex() {
-  const playerDispatch = useContext(PlayerDispatchContext)
+  const playerDispatch = useContext(PlayerDispatchContext)!
 
   const { albumId } = useParams()
   const [album, setAlbum] = useState<Album | undefined>(undefined)

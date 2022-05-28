@@ -1,13 +1,18 @@
+import classNames from 'classnames'
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import VolumeControl from './VolumeControl'
 
-const PlayerControls = () => {
+interface IProps {
+  className?: string
+}
+
+const PlayerControl = ({ className }: IProps) => {
   const navigate = useNavigate()
 
   return (
-    <div>
+    <div className={classNames(className)}>
       <i
         className="icon-playlist one-icon-button"
         onClick={() => { navigate('/queue') }}
@@ -19,4 +24,4 @@ const PlayerControls = () => {
   )
 }
 
-export default PlayerControls
+export default PlayerControl

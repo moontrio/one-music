@@ -28,7 +28,7 @@ export interface HTMLMediaControls {
   seek: (time: number) => void
 }
 
-type MediaPropsWithRef<T> = HTMLMediaProps & { ref?: React.MutableRefObject<T | null> }
+export type MediaPropsWithRef<T> = HTMLMediaProps & { ref?: React.MutableRefObject<T | null> }
 
 export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVideoElement>(
   tag: 'audio' | 'video',
