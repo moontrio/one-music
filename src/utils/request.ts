@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const baseURL = '/api'
-const REAL_IP = '211.161.244.70'
+const REAL_IP = '113.112.0.0'
 
 const request = axios.create({
   baseURL,
