@@ -9,13 +9,15 @@ const request = axios.create({
   timeout: 15000,
 })
 
-// request.interceptors.request.use((config) => {
-//   if (!config.params) config.params = {}
-//   config.params.realIP = REAL_IP
-//   if (!config.headers) config.headers = {}
-//   config.headers['X-Real-IP'] = REAL_IP
-//   return config
-// })
+request.interceptors.request.use((config) => {
+  if (!config.params) config.params = {}
+  config.params.realIP = REAL_IP
+
+  if (!config.headers) config.headers = {}
+  config.headers['X-Real-IP'] = REAL_IP
+
+  return config
+})
 
 request.interceptors.response.use(
   response => response?.data,
