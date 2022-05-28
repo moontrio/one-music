@@ -22,7 +22,7 @@ function App() {
         <div className="main-container w-full h-full flex pb-64px">
           {/* side bar */}
           <aside className="aside-menu py-8 px-5 bg-white">
-            <div className="py-2 px-4 text-gray-400">Browse</div>
+            <div className="py-2 px-4 text-third">Browse</div>
             <Navigation
               navigationList={NAVIGATION_LIST}
               // TODO: 把左侧菜单，以及路由跳转的功能，都放到一个组件中去

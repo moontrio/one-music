@@ -35,10 +35,17 @@ export default defineConfig({
         blue: colors.lightBlue,
         red: colors.rose,
         pink: colors.fuchsia,
+        highlight: colors.violet[700],
+        light: colors.violet[50],
       },
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
+      },
+      textColor: {
+        primary: colors.slate[900],
+        secondary: colors.slate[700],
+        third: colors.slate[400],
       },
       spacing: {
         128: '32rem',
@@ -78,8 +85,8 @@ export default defineConfig({
           boxShadow: '0 0 0.5rem rgba(0, 0, 0, 0.1)',
         },
         '.btn-blue': {
-          'backgroundColor': '#f0f9ff',
-          'color': '#0ea5e9',
+          'backgroundColor': colors.violet[50],
+          'color': colors.violet[700],
           '&:hover': {
             transform: 'scale(1.05)',
           },

@@ -31,7 +31,7 @@ function PlaylistRow(props: IProps) {
       className={classNames(
         'playlist-row',
         'grid grid-cols-[48px,4fr,2fr,minmax(120px,1fr)] items-center gap-4',
-        'p-2 rounded-xl hover:bg-gray-100',
+        'p-2 rounded-xl',
         'transform duration-300',
         className,
       )}

@@ -61,9 +61,9 @@ function AlbumIndex() {
         <div className="flex flex-col ml-56px">
           <div className="text-56px leading-normal font-semibold">{album.name}</div>
           <div className="mt-6 text-lg font-semibold">{album?.artist?.name}</div>
-          <div className="mt-1 text-sm text-gray-700">{new Date(album.publishTime!).getFullYear()}·{album.size}首歌曲</div>
+          <div className="mt-1 text-sm text-secondary">{new Date(album.publishTime!).getFullYear()}·{album.size}首歌曲</div>
           <p
-            className="mt-6 text-sm text-gray-700 line-clamp-5 whitespace-pre-wrap cursor-pointer"
+            className="mt-6 text-sm text-secondary line-clamp-5 whitespace-pre-wrap cursor-pointer"
             onClick={() => { setIsDescriptionVisible(true) }}
           >{album.description}</p>
         </div>

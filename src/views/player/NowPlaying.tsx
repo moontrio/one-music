@@ -18,7 +18,7 @@ const NowPlaying = ({ music, className }: IProps) => {
       <img className="w-48px h-48px rounded-md cursor-pointer" src={getImgUrlWithSize(music.album.picUrl, 224)} />
       <div className="flex flex-col justify-around">
         <span>{music.name}</span>
-        <span className="text-xs text-gray-700 line-clamp-1">{music.artists
+        <span className="text-xs text-primary line-clamp-1">{music.artists
           .map(item => item.name)
           .join(', ')}</span>
       </div>

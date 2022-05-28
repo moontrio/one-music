@@ -40,9 +40,9 @@ const Navigation: React.FC<NavigationProps> = ({ navigationList, clickHandle = (
           key={item.value}
           // TODO: 这样组织 class 可读性很差，也不好维护
           className={classNames([
-            'py-2 px-4 w-40 mb-1 cursor-pointer text-gray-600 rounded-lg',
-            'hover:bg-gray-200'
-          ], { 'bg-gray-200 text-yellow-600': current === item.value })}
+            'py-2 px-4 w-40 mb-1 cursor-pointer text-secondary rounded-lg',
+            'hover:(text-highlight bg-light)',
+          ], { 'text-highlight bg-light': current === item.value })}
           onClick={() => handleNavClick(item.value)}
         >
           <Icon icon={item.icon} />
