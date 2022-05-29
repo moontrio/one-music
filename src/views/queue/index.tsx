@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { PlaylistRow } from '@/components/track'
+import { ReactComponent as Playlist } from '@/assets/icons/playlist.svg'
 
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 import { PlayerDispatchContext, PlayerStateContext } from '@/context/player'
@@ -10,8 +11,8 @@ import type { Music } from '@/models'
 function Queue() {
   const navigate = useNavigate()
 
-  const playerState = useContext(PlayerStateContext)
-  const playerDispatch = useContext(PlayerDispatchContext)
+  const playerState = useContext(PlayerStateContext)!
+  const playerDispatch = useContext(PlayerDispatchContext)!
 
   const { playlist = [], index = 0 } = playerState
   const currentSong = playlist[index]
@@ -48,7 +49,7 @@ function Queue() {
       </div>
     </div>)
     : (<div className="wh-full flex-center flex-col">
-      <i className="icon-playlist !text-primary mb-60px transform scale-800" />
+      <Playlist className="mb-2 text-primary" width="128px" height="128px" fill="currentColor" />
       <button
         className="btn btn-primary"
         onClick={() => { navigate('/explore') }}
