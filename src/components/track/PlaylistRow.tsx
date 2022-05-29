@@ -7,13 +7,13 @@ import Cover from '@/components/cover'
 import { formatMilliseconds, getImgUrlWithSize } from '@/utils'
 import type { Artist, Music } from '@/models'
 
-interface IProps {
+interface Props {
   song: Music
   play?: () => void
   className?: string
 }
 
-function PlaylistRow(props: IProps) {
+function PlaylistRow(props: Props) {
   const {
     song,
     play = () => {},

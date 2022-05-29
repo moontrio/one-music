@@ -6,13 +6,13 @@ import './TrackListRow.css'
 import { formatMilliseconds } from '@/utils'
 import type { Artist, Music } from '@/models'
 
-interface IProps {
+interface Props {
   song: Music
   index: number
   play: (song: Music) => void
 }
 
-const TrackListRow = (props: IProps) => {
+const TrackListRow = (props: Props) => {
   const {
     song,
     index,

@@ -4,12 +4,12 @@ import classNames from 'classnames'
 import type { Music } from '@/models'
 import { getImgUrlWithSize } from '@/utils'
 
-interface IProps {
+interface Props {
   music: Music
   className?: string
 }
 
-const NowPlaying = ({ music, className }: IProps) => {
+const NowPlaying = ({ music, className }: Props) => {
   return (
     <div className={classNames(
       'now-playing flex gap-3',

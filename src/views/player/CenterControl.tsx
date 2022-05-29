@@ -4,11 +4,11 @@ import classNames from 'classnames'
 import { AudioContext, PlayerDispatchContext } from '@/context/player'
 import { ACTIONS as PLAYER_ACTIONS } from '@/reducers/player'
 
-interface IProps {
+interface Props {
   className?: string
 }
 
-const CenterControl = ({ className }: IProps) => {
+const CenterControl = ({ className }: Props) => {
   const audioInfo = useContext(AudioContext)
   const playerDispatch = useContext(PlayerDispatchContext)!
   const { ref, state, controls } = audioInfo!

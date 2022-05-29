@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 
 import VolumeControl from './VolumeControl'
 
-interface IProps {
+interface Props {
   className?: string
 }
 
-const PlayerControl = ({ className }: IProps) => {
+const PlayerControl = ({ className }: Props) => {
   const navigate = useNavigate()
 
   return (
