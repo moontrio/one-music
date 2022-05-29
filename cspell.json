@@ -5,6 +5,7 @@
     "dictionaries": [],
     "words": [],
     "ignoreWords": [
+      "vite",
       "windicss",
       "semibold"
     ],

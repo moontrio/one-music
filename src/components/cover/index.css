@@ -16,9 +16,9 @@
 .cover-icon {
   color: aliceblue;
 
-  width: 48px;
-  height: 48px;
-  font-size: 28px;
+  padding: 3%;
+  width: 24%;
+  height: auto;
 
   border: 1px solid hsla(0,0%,100%,.08);
   background: hsla(0,0%,100%,.14);

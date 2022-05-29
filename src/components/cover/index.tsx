@@ -1,6 +1,8 @@
 import React from 'react'
-
 import classNames from 'classnames'
+
+// @ts-expect-error:next-line
+import { ReactComponent as Play } from '@/assets/icons/play.svg'
 
 import './index.css'
 
@@ -27,18 +29,17 @@ const Cover = (props: CoverProps) => {
   } = props
 
   return (
-    <div className={classNames([
-      'cover-container relative rounded-xl children:rounded-lg',
-      className,
-    ])} >
+    <div
+      className={classNames(['cover-container relative rounded-xl children:rounded-lg', className])}
+    >
       <button className={classNames('cover-icon-btn absolute-center', !showIcon && 'hidden')}>
-        <i className="cover-icon icon-play relative z-10 flex-center rounded-full" onClick={onClickPlay} />
+        <Play
+          className="cover-icon relative z-10 flex-center rounded-full"
+          fill="currentColor"
+          onClick={onClickPlay}
+        />
       </button>
-      <img
-        className="cover-img relative cursor-pointer"
-        src={imgUrl}
-        onClick={onClickCover}
-      />
+      <img className="cover-img relative cursor-pointer" src={imgUrl} onClick={onClickCover} />
       <span
         className={classNames(
           'cover-shadow',
