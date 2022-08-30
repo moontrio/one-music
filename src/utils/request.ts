@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const baseURL = '/api'
-const REAL_IP = '113.112.0.0'
+// const REAL_IP = '113.112.0.0'
 
 const request = axios.create({
   baseURL,
@@ -10,11 +10,11 @@ const request = axios.create({
 })
 
 request.interceptors.request.use((config) => {
-  if (!config.params) config.params = {}
-  config.params.realIP = REAL_IP
+//   if (!config.params) config.params = {}
+//   config.params.realIP = REAL_IP
 
-  if (!config.headers) config.headers = {}
-  config.headers['X-Real-IP'] = REAL_IP
+//   if (!config.headers) config.headers = {}
+//   config.headers['X-Real-IP'] = REAL_IP
 
   return config
 })
